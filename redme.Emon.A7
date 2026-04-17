@@ -1,0 +1,49 @@
+  Friend Tracker App
+
+##  Project Name
+KeenKeeper Project
+
+---
+
+##  Short Description
+Friend Tracker App is a simple and interactive web application where users can manage friends and track interactions like Call, Text, and Video. It also shows a timeline of all interactions and provides analytics through a stats dashboard.
+
+---
+
+##  Technologies Used
+- React.js
+- React Router
+- Tailwind CSS
+- LocalStorage (for data persistence)
+- React Toastify
+- Recharts (for charts)
+
+---
+
+##  Key Features
+
+### 1️. Friend Details Management
+View detailed information about each friend including name, bio, status, and contact details.
+
+### 2️. Interaction Tracking
+Users can log interactions like Call, Text, and Video. All interactions are stored in LocalStorage.
+
+### 3️. Timeline & Analytics
+- Timeline page shows all past interactions
+- Stats page visualizes interaction data using a Pie Chart
+
+---
+
+##  Additional Features
+- Responsive UI for mobile and desktop
+- Clean and modern dashboard design
+
+---
+
+
+
+##  How to Run the Project
+
+```bash
+npm install
+npm run dev
