@@ -23,7 +23,7 @@ const router = createBrowserRouter(
          element: <Homepage> </Homepage>
         },
         {
-          path:'/frienddetails',
+          path:'/frienddetail/:id',
           element: <FriendDetail> </FriendDetail>
         },
         {
@@ -33,7 +33,7 @@ const router = createBrowserRouter(
         {
           path: 'stats',
           element: <Stats></Stats>
-        }
+        },
       ],
       errorElement: <NotFound> </NotFound>
     },
