@@ -24,6 +24,21 @@ const FriendDetail = () => {
         fetchData();
     }, [id]);
     
+    const handleInteraction = (type) => {
+    const newRecord = {
+        id: selected.id,
+        name: selected.name,
+        type: type, // call / text / video
+        date: new Date().toLocaleString()
+    };
+
+    const existing = JSON.parse(localStorage.getItem("timeline")) || [];
+
+    existing.push(newRecord);
+
+    localStorage.setItem("timeline", JSON.stringify(existing));
+};
+    
    
     return (
         <div className="bg-gray-100 border p-4 md:p-8">
@@ -124,17 +139,17 @@ const FriendDetail = () => {
 
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
-                            <button className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2">
+                            <button onClick={() => handleInteraction("Call")} className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2">
                                 <img src={callicon} alt="" className="w-5 h-5" />
                                 <span >Call</span>
                             </button>
 
-                            <button className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2">
+                            <button onClick={() => handleInteraction("Text")} className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2">
                                 <img src={texticon} alt="" className="w-5 h-5" />
                                 <span>Text</span>
                             </button>
 
-                            <button className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2">
+                            <button onClick={() => handleInteraction("Video")} className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2">
                                 <img src={videoicon} alt="" className="w-5 h-5" />
                                 <span>Video</span>
                             </button>
