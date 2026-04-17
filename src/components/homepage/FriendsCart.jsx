@@ -40,7 +40,7 @@ const FriendsCart = () => {
                         {
                             carts.map((cart, ind)=>{
                                 return (
-                                   <Link key={ind} to={`/frienddetail/${cart.id}`} > <div className='border border-gray-500 card items-center shadow p-5 '>
+                                   <Link key={ind} to={`/frienddetail/${cart.id}`} > <div className=' border-gray-500 card items-center shadow p-5 '>
                                     <div className='w-20 h-20 rounded-full overflow-hidden '>
                                          <img src={cart.picture}  alt="" className='w-full h-full object-cover' />
                                      </div>

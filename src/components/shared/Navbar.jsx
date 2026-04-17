@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from '../../../assets/images/logo.png'
-import homeicon from '../../../assets/images/Vector (1).png'
-import timelineicon from '../../../assets/images/Vector (2).png'
-import statsicon from '../../../assets/images/Vector (3).png'
+import homeicon from '../../../assets/images/Vector (4).png'
+import timelineicon from '../../../assets/images/Vector (5).png'
+import statsicon from '../../../assets/images/Vector (6).png'
 import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {

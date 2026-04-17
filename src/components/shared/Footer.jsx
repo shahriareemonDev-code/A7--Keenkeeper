@@ -19,7 +19,7 @@ const Footer = () => {
             <hr className='pt-10 container mx-auto border-amber-50 ' />
             <div className='flex justify-between max-w-[80%] mx-auto '>
                 <p className='opacity-100 text-white'>© 2026 KeenKeeper. All rights reserved.</p>
-                <div className='text-white flex opacity-100 gap-4'>
+                <div className='text-white flex opacity-100 gap-4 pb-4'>
                     <p>Privacy Policy</p>
                     <p>Terms of Services</p>
                     <p>Cookies</p>

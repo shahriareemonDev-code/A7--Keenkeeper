@@ -8,7 +8,7 @@ const Banner = () => {
                 <p className='opacity-100'>Your personal shelf of meaningful connections. Browse, tend, and nurture the
                    <br /> relationships that matter most.</p>
             </div>
-            <button className='mt-8 px-4 py-3 bg-[#244D3F] text-white text-center rounded-xl'>+Add a Friend</button>
+            <button className='mt-8 px-4 py-3 bg-[#244D3F] text-white text-center rounded-xl font-semibold'>+ Add a Friend</button>
         </div>
     );
 };

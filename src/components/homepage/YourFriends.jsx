@@ -11,7 +11,7 @@ const YourFriends = () => {
           <p className="text-gray-500 mt-2">Total Friends</p>
         </div>
 
-        <div className=" rounded-xl p-6 text-center shadow-sm border-2 border-blue-400">
+        <div className=" rounded-xl p-6 text-center shadow-sm">
           <h1 className="text-4xl font-bold text-gray-700">3</h1>
           <p className="text-gray-500 mt-2">On Track</p>
         </div>
