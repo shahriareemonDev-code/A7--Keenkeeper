@@ -17,14 +17,14 @@ const YourFriends = () => {
         </div>
 
         <div className=" rounded-xl p-6 text-center shadow-sm">
-          <h1 className="text-4xl font-bold text-gray-700">6</h1>
-          <p className="text-gray-500 mt-2">Need Attention</p>
+          <h1 className="text-4xl font-bold text-gray-700">5</h1>
+          <p className="text-gray-500 mt-2">Overdue </p>
         </div>
 
 
         <div className=" rounded-xl p-6 text-center shadow-sm">
-          <h1 className="text-4xl font-bold text-gray-700">12</h1>
-          <p className="text-gray-500 mt-2">Interactions This Month</p>
+          <h1 className="text-4xl font-bold text-gray-700">4</h1>
+          <p className="text-gray-500 mt-2">Almost Due </p>
         </div>
       
       </div>
