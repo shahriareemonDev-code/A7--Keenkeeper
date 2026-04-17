@@ -7,7 +7,7 @@ const YourFriends = () => {
 
 
         <div className=" rounded-xl p-6 text-center shadow-sm">
-          <h1 className="text-4xl font-bold text-gray-700">10</h1>
+          <h1 className="text-4xl font-bold text-gray-700">12</h1>
           <p className="text-gray-500 mt-2">Total Friends</p>
         </div>
 

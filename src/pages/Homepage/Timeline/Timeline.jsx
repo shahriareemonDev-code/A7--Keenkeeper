@@ -44,7 +44,7 @@ const Timeline = () => {
 
                                 <h3 className="font-semibold">{item.name}</h3>
 
-                                {/* 🔥 ICON + TYPE */}
+                                {/*  ICON + TYPE */}
                                 <div className="flex items-center gap-2 mt-1">
 
                                     {item.type === "Call" && (

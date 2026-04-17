@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { toast } from "react-toastify";
+
 import callicon from '../../../assets/images/call.png'
 import texticon from '../../../assets/images/text.png'
 import videoicon from '../../../assets/images/video.png'
 import snoozicon from '../../../assets/images/Vector (1).png'
 import archivicon from '../../../assets/images/Vector (3).png'
 import dlticon from '../../../assets/images/Vector (2).png'
-
 
 const FriendDetail = () => {
     const { id } = useParams()
@@ -17,52 +18,53 @@ const FriendDetail = () => {
         const fetchData = async () => {
             const res = await fetch('/data.json');
             const data = await res.json();
-            
-            const selectedData = data.find((friendData) => String(friendData.id) === id)
+
+            const selectedData = data.find(
+                (friendData) => String(friendData.id) === id
+            )
+
             setSelected(selectedData)
         };
         fetchData();
     }, [id]);
-    
+
     const handleInteraction = (type) => {
-    const newRecord = {
-        id: selected.id,
-        name: selected.name,
-        type: type, // call / text / video
-        date: new Date().toLocaleString()
+        const newRecord = {
+            id: selected.id,
+            name: selected.name,
+            type: type,
+            date: new Date().toLocaleString()
+        };
+
+        const existing = JSON.parse(localStorage.getItem("timeline")) || [];
+        existing.push(newRecord);
+        localStorage.setItem("timeline", JSON.stringify(existing));
+
+        //  TOAST
+        toast.success(`${type} added to timeline`);
     };
 
-    const existing = JSON.parse(localStorage.getItem("timeline")) || [];
+    const handleActionToast = (action) => {
+        toast.info(`${action} clicked`);
+    };
 
-    existing.push(newRecord);
-
-    localStorage.setItem("timeline", JSON.stringify(existing));
-};
-    
-   
     return (
         <div className="bg-gray-100 border p-4 md:p-8">
 
             {/* MAIN GRID */}
-            <div className=" container mx-auto grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6 px-20 py-10">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6 px-20 py-10">
 
                 {/* LEFT CARD */}
                 <div className="shadow bg-white rounded-xl p-6 text-center flex flex-col items-center">
 
-                    <img
-                        src={selected?.picture}
-                        alt=""
-                        className="w-20 h-20 rounded-full mb-3 object-cover"
-                    />
+                    <img src={selected?.picture} className="w-20 h-20 rounded-full mb-3 object-cover" />
 
                     <h2 className="text-lg font-semibold">{selected?.name}</h2>
 
-                    {/* STATUS */}
                     <span className="bg-red-500 text-white text-xs px-3 py-1 rounded-full mt-2">
                         {selected?.status}
                     </span>
 
-                    {/* TAG */}
                     <span className="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full mt-2">
                         {selected?.tags}
                     </span>
@@ -78,18 +80,27 @@ const FriendDetail = () => {
                     {/* ACTION BUTTONS */}
                     <div className="w-full mt-6 flex flex-col gap-3">
 
-                        <button className="bg-gray-50 hover:bg-gray-100 flex items-center justify-center gap-2 rounded-lg py-3 text-sm">
-                            <img src={snoozicon} alt="" className="w-4 h-4" />
+                        <button
+                            onClick={() => handleActionToast("Snooze")}
+                            className="bg-gray-50 hover:bg-gray-100 flex items-center justify-center gap-2 rounded-lg py-3 text-sm"
+                        >
+                            <img src={snoozicon} className="w-4 h-4" />
                             <span>Snooze 2 Weeks</span>
                         </button>
 
-                        <button className="bg-gray-50 hover:bg-gray-100 flex items-center justify-center gap-2 rounded-lg py-3 text-sm">
-                            <img src={archivicon} alt="" className="w-4 h-4" />
+                        <button
+                            onClick={() => handleActionToast("Archive")}
+                            className="bg-gray-50 hover:bg-gray-100 flex items-center justify-center gap-2 rounded-lg py-3 text-sm"
+                        >
+                            <img src={archivicon} className="w-4 h-4" />
                             <span>Archive</span>
                         </button>
 
-                        <button className="bg-gray-50 hover:bg-red-50 flex items-center justify-center gap-2 rounded-lg py-3 text-sm text-red-500">
-                            <img src={dlticon} alt="" className="w-4 h-4" />
+                        <button
+                            onClick={() => handleActionToast("Delete")}
+                            className="bg-gray-50 hover:bg-red-50 flex items-center justify-center gap-2 rounded-lg py-3 text-sm text-red-500"
+                        >
+                            <img src={dlticon} className="w-4 h-4" />
                             <span>Delete</span>
                         </button>
 
@@ -128,7 +139,10 @@ const FriendDetail = () => {
                             </p>
                         </div>
 
-                        <button className="bg-gray-50 hover:bg-gray-100 px-3 py-1 rounded text-sm">
+                        <button
+                            onClick={() => handleActionToast("Edit")}
+                            className="bg-gray-50 hover:bg-gray-100 px-3 py-1 rounded text-sm"
+                        >
                             Edit
                         </button>
                     </div>
@@ -139,18 +153,24 @@ const FriendDetail = () => {
 
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
-                            <button onClick={() => handleInteraction("Call")} className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2">
-                                <img src={callicon} alt="" className="w-5 h-5" />
-                                <span >Call</span>
+                            <button onClick={() => handleInteraction("Call")}
+                                className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2"
+                            >
+                                <img src={callicon} className="w-5 h-5" />
+                                <span>Call</span>
                             </button>
 
-                            <button onClick={() => handleInteraction("Text")} className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2">
-                                <img src={texticon} alt="" className="w-5 h-5" />
+                            <button onClick={() => handleInteraction("Text")}
+                                className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2"
+                            >
+                                <img src={texticon} className="w-5 h-5" />
                                 <span>Text</span>
                             </button>
 
-                            <button onClick={() => handleInteraction("Video")} className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2">
-                                <img src={videoicon} alt="" className="w-5 h-5" />
+                            <button onClick={() => handleInteraction("Video")}
+                                className="bg-gray-50 hover:bg-gray-100 rounded-lg py-6 flex flex-col items-center gap-2"
+                            >
+                                <img src={videoicon} className="w-5 h-5" />
                                 <span>Video</span>
                             </button>
 
