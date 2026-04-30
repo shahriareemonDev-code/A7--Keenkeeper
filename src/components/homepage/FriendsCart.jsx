@@ -33,7 +33,7 @@ const FriendsCart = () => {
         <div>
             <div className='container mx-auto card'>
                 <div className='text-2xl font-semibold'>
-                    <h2>Your Friends</h2>
+                    <h2 className='p-3'>Your Friends</h2>
                 </div>
                 <div>
                     <div className=' grid grid-cols-3 lg:grid-cols-4  card py-10 px-6 gap-10 '>    
